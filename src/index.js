@@ -1,17 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const add = document.getElementById('add');
+const minus = document.getElementById('minus');
+const number = document.querySelector('span');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reducer 나의 state (data) 를 수정하는 함수이다.
+const reducer = (state = 0, action) => {
+  if(action.type === 'ADD'){
+    console.log('reducer action is ADD')
+    state++;
+    console.log('state: ',state);
+    return state;
+  } else if (action.type === 'MINUS') {
+    console.log('reducer action is MINUS')
+    state--;
+    console.group('state: ', state);
+    return state;
+  } else {
+    return state;
+  }
+  
+}
+
+const store = createStore(reducer); //나의 data를 저장하는 곳.
+
+console.log('store: ', store.getState());
+
+// store.dispatch({type: 'ADD'});
+// store.dispatch({type: 'ADD'});
+// store.dispatch({type: 'ADD'});
+// store.dispatch({type: 'ADD'});
+// store.dispatch({type: 'MINUS'});
+
+const handleAdd = () => {
+  store.dispatch({ type: 'ADD '})
+}
+
+const handleMinus = () => {
+  store.dispatch({ type: 'MINUS '})
+}
+add.addEventListener('click', handleAdd );
+minus.addEventListener('click', handleMinus );
+
+console.log('store: ', store.getState());
