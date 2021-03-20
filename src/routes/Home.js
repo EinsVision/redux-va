@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
+import { addToDo } from './store';
 
-function Home({toDos}) {
+function Home({ toDos, dispatch }) {
   const [text, setText] = useState('');
 
   const onChange = (e) => {
@@ -11,6 +12,8 @@ function Home({toDos}) {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(text);
+    setText('');
+    dispatch(addToDo(text));
   }
 
   return (
@@ -30,6 +33,10 @@ function mapStateToProps(state){
   return { toDos: state };
 }
 
-export default connect(mapStateToProps)(Home);
+function mapDispatchToProps(dispatch){
+  return {dispatch};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 // connect : 나의 components들을 store에 연결시켜줌 ( state, dispatch )
