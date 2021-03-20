@@ -1,22 +1,18 @@
-const add = document.getElementById('add');
-const minus = document.getElementById('minus');
-const number = document.querySelector('span');
-let value = parseInt(number.innerText);
+import { createStore } from 'redux';
+// store : 나의 state (data) 를 담는 곳!
 
-const updateValue = () => {
-  number.innerText = value;
+// reducer function은 나의 state (data)를 수정하는 곳이다.
+// 오직 하나의 reducer 함수가 state 수정을 관리한다!!! Redux의 강력함이다.
+const reducer = (state = 0) => {
+  return state;
 }
 
+const store = createStore(reducer);
 
-const handleAdd = () => {
-  value += 1; 
-  updateValue();
-}
+console.log(store);
+console.log(store.getState());
 
-const handleMinus = () => {
-  value -= 1;
-  updateValue();
-}
 
-add.addEventListener('click', handleAdd);
-minus.addEventListener('click', handleMinus);
+
+
+
