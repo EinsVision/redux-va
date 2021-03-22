@@ -40,3 +40,13 @@ function mapDispatchToProps(dispatch){
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 // connect : 나의 components들을 store에 연결시켜줌 ( state, dispatch )
+// {
+//   todos: [{
+//     text: 'Eat food',
+//     completed: true
+//   }, {
+//     text: 'Exercise',
+//     completed: false
+//   }],
+//   visibilityFilter: 'SHOW_COMPLETED'
+// }
